@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         bootstrap="tests/Unit/bootstrap.php"
+>
+    <testsuites>
+        <testsuite name="Es Qb Test Suite">
+            <directory>./tests/Integration</directory>
+            <exclude>./tests/Integration/bootstrap.php</exclude>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+  		<whitelist processUncoveredFilesFromWhitelist="true">
+    		<directory suffix=".php">src/</directory>
+        </whitelist>
+	</filter>
+</phpunit>
