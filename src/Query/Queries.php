@@ -70,4 +70,78 @@ class Queries
     {
         return new DisMaxQuery();
     }
+
+    /**
+     * Creates a distance feature query.
+     */
+    public static function distanceFeatureQuery(string $field, string $origin, string $pivot): DistanceFeatureQuery
+    {
+        return new DistanceFeatureQuery($field, $origin, $pivot);
+    }
+
+    /**
+     * Creates a IDs query.
+     */
+    public static function idsQuery(): IdsQuery
+    {
+        return new IdsQuery();
+    }
+
+    /**
+     * Creates a term query.
+     *
+     * @param string|int|float|bool $value
+     */
+    public static function termQuery(string $fieldName, $value): TermQuery
+    {
+        return new TermQuery($fieldName, $value);
+    }
+
+    /**
+     * Creates a fuzzy query.
+     */
+    public static function fuzzyQuery(string $field, string $query): FuzzyQuery
+    {
+        return new FuzzyQuery($field, $query);
+    }
+
+    /**
+     * Creates a prefix query.
+     */
+    public static function prefixQuery(string $field, string $query): PrefixQuery
+    {
+        return new PrefixQuery($field, $query);
+    }
+
+    /**
+     * Creates a range query.
+     */
+    public static function rangeQuery(string $field): RangeQuery
+    {
+        return new RangeQuery($field);
+    }
+
+    /**
+     * Creates a wildcard query.
+     */
+    public static function wildcardQuery(string $field, string $query): WildcardQuery
+    {
+        return new WildcardQuery($field, $query);
+    }
+
+    /**
+     * Creates a regexp query.
+     */
+    public static function regexpQuery(string $field, string $regexp): RegexpQuery
+    {
+        return new RegexpQuery($field, $regexp);
+    }
+
+    /**
+     * Creates a query string query.
+     */
+    public static function queryStringQuery(string $query): QueryStringQuery
+    {
+        return new QueryStringQuery($query);
+    }
 }

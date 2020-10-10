@@ -53,7 +53,7 @@ abstract class EsQbIntegrationTest extends TestCase
             sprintf(
                 "Invalid Query : %s\nError: %s",
                 json_encode($query->toQuery(), JSON_THROW_ON_ERROR),
-                $validateResult['error'] ?? ''
+                $validateResult['error'] ?? $validateResult['explanations'][0]['error'] ?? ''
             )
         );
     }

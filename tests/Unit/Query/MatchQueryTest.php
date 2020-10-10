@@ -28,7 +28,6 @@ class MatchQueryTest extends TestCase
                 'operator' => 'AND',
                 'minimum_should_match' => '75%',
                 'zero_terms_query' => 'all',
-
             ],
         ],
     ];
