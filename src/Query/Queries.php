@@ -46,4 +46,28 @@ class Queries
     {
         return new MatchBoolPrefixQuery($field, $query);
     }
+
+    /**
+     * Creates a match phrase prefix query for the provided field name and text.
+     */
+    public static function matchPhraseQuery(string $field, string $query): MatchPhraseQuery
+    {
+        return new MatchPhraseQuery($field, $query);
+    }
+
+    /**
+     * Creates a match phrase prefix query for the provided field name and text.
+     */
+    public static function matchPhrasePrefixQuery(string $field, string $query): MatchPhrasePrefixQuery
+    {
+        return new MatchPhrasePrefixQuery($field, $query);
+    }
+
+    /**
+     * Creates a disjunction max query.
+     */
+    public static function disMaxQuery(): DisMaxQuery
+    {
+        return new DisMaxQuery();
+    }
 }

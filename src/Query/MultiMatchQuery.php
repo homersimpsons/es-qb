@@ -28,8 +28,8 @@ final class MultiMatchQuery extends AbstractQuery
     private float $tieBreaker                      = 0.;
 
     /**
-     * @param string[] $fields The field names.
-     * @param string   $query  The query text (to be analyzed).
+     * @param string ...$fields The field names.
+     * @param string $query     The query text (to be analyzed).
      */
     public function __construct(string $query, string ...$fields)
     {

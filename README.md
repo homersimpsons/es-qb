@@ -29,7 +29,7 @@ Integration tests do need an active Elasticsearch instance, they are located und
 You can create an instance with the following [docker](https://www.docker.com/) command:
 
 ```shell script
-docker run -d --name elasticsearch -p 9200:9200 -e "discovery.type=single-node" elasticsearch:7.8.0
+docker run -d --name elasticsearch -p 9200:9200 -e "discovery.type=single-node" elasticsearch:7.9.0
 ```
 
 Once the instance is running you can run the tests against it with `composer test:integration`
