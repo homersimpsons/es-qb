@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace EsQb\Query;
 
-class WildcardQuery extends AbstractQuery
+class WildcardQuery extends AbstractQuery implements MultiTermQuery
 {
     private string $field;
     private string $query;

@@ -92,9 +92,9 @@ class Queries
      *
      * @param string|int|float|bool $value
      */
-    public static function termQuery(string $fieldName, $value): TermQuery
+    public static function termQuery(string $field, $value): TermQuery
     {
-        return new TermQuery($fieldName, $value);
+        return new TermQuery($field, $value);
     }
 
     /**
@@ -143,5 +143,98 @@ class Queries
     public static function queryStringQuery(string $query): QueryStringQuery
     {
         return new QueryStringQuery($query);
+    }
+
+    /**
+     * Creates a simple query string query.
+     */
+    public static function simpleQueryStringQuery(string $query): SimpleQueryStringQuery
+    {
+        return new SimpleQueryStringQuery($query);
+    }
+
+    /**
+     * Creates a boosting query.
+     */
+    public static function boostingQuery(
+        AbstractQuery $positive,
+        AbstractQuery $negative,
+        float $negativeBoost
+    ): BoostingQuery {
+        return new BoostingQuery($positive, $negative, $negativeBoost);
+    }
+
+    /**
+     * Creates a bool query.
+     */
+    public static function boolQuery(): BoolQuery
+    {
+        return new BoolQuery();
+    }
+
+    /**
+     * Creates a span term query.
+     *
+     * @param string|int|float|bool $value
+     */
+    public static function spanTermQuery(string $field, $value): SpanTermQuery
+    {
+        return new SpanTermQuery($field, $value);
+    }
+
+    /**
+     * Creates a span first query.
+     */
+    public static function spanFirstQuery(SpanQuery $match, int $end): SpanFirstQuery
+    {
+        return new SpanFirstQuery($match, $end);
+    }
+
+    /**
+     * Creates a span near query.
+     */
+    public static function spanNearQuery(SpanQuery $initialClause, int $slop): SpanNearQuery
+    {
+        return new SpanNearQuery($initialClause, $slop);
+    }
+
+    /**
+     * Creates a span not query.
+     */
+    public static function spanNotQuery(SpanQuery $include, SpanQuery $exclude): SpanNotQuery
+    {
+        return new SpanNotQuery($include, $exclude);
+    }
+
+    /**
+     * Creates a span or query.
+     */
+    public static function spanOrQuery(SpanQuery $initialClause): SpanOrQuery
+    {
+        return new SpanOrQuery($initialClause);
+    }
+
+    /**
+     * Creates a span not query.
+     */
+    public static function spanWithinQuery(SpanQuery $big, SpanQuery $little): SpanWithinQuery
+    {
+        return new SpanWithinQuery($big, $little);
+    }
+
+    /**
+     * Creates a span containing query.
+     */
+    public static function spanContainingQuery(SpanQuery $big, SpanQuery $little): SpanContainingQuery
+    {
+        return new SpanContainingQuery($big, $little);
+    }
+
+    /**
+     * Creates a span multi query.
+     */
+    public static function spanMultiTermQuery(MultiTermQuery $multiTermQuery): SpanMultiTermQuery
+    {
+        return new SpanMultiTermQuery($multiTermQuery);
     }
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace EsQb\Query;
 
-final class PrefixQuery extends AbstractQuery
+final class PrefixQuery extends AbstractQuery implements MultiTermQuery
 {
     private string $field;
     private string $query;

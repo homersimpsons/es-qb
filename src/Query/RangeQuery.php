@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace EsQb\Query;
 
-class RangeQuery extends AbstractQuery
+class RangeQuery extends AbstractQuery implements MultiTermQuery
 {
     public const RELATION = 'INTERSECTS';
 

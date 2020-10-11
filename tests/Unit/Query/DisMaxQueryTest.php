@@ -8,6 +8,7 @@ use EsQb\Query\DisMaxQuery;
 use EsQb\Query\MatchAllQuery;
 use EsQb\Query\TermQuery;
 use PHPUnit\Framework\TestCase;
+use stdClass;
 
 class DisMaxQueryTest extends TestCase
 {
@@ -28,7 +29,7 @@ class DisMaxQueryTest extends TestCase
     {
         $query = new DisMaxQuery();
         $query->addQueries(new MatchAllQuery());
-        $this->assertEquals(['dis_max' => ['queries' => [['match_all' => []]]]], $query->toQuery());
+        $this->assertEquals(['dis_max' => ['queries' => [['match_all' => new stdClass()]]]], $query->toQuery());
     }
 
     public function testFullQuery(): void

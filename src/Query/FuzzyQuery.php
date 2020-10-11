@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace EsQb\Query;
 
-final class FuzzyQuery extends AbstractQuery
+final class FuzzyQuery extends AbstractQuery implements MultiTermQuery
 {
     private string $field;
     private string $query;

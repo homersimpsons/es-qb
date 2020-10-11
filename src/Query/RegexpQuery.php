@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace EsQb\Query;
 
-class RegexpQuery extends AbstractQuery
+class RegexpQuery extends AbstractQuery implements MultiTermQuery
 {
     public const MAX_DETERMINIZED_STATES = 10000;
 

@@ -13,5 +13,6 @@ class MatchAllQueryTest extends EsQbIntegrationTest
     public function testBase(): void
     {
         $this->assertValidQuery(new ArrayQueryWrapper(UnitMatchAllQueryTest::FULL_QUERY));
+        $this->assertValidQuery(new ArrayQueryWrapper(UnitMatchAllQueryTest::baseQuery()));
     }
 }
