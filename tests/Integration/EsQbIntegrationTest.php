@@ -20,6 +20,8 @@ abstract class EsQbIntegrationTest extends TestCase
     // One of https:// www.elastic.co/guide/en/elasticsearch/reference/current/analysis-analyzers.html
     public const TEST_ANALYZER = 'simple';
 
+    public const GEO_POINT_FIELD = 'geo_point';
+
     private static ?Client $client = null;
 
     public static function setUpBeforeClass(): void
@@ -39,7 +41,9 @@ abstract class EsQbIntegrationTest extends TestCase
             'body' => [
                 'mappings' => [
                     'dynamic' => 'strict',
-                    'properties' => [],
+                    'properties' => [
+                        'geo_point' => ['type' => 'geo_point'],
+                    ],
                 ],
             ],
         ]);

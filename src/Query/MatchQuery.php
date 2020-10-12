@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace EsQb\Query;
 
+use EsQb\Utils;
 use InvalidArgumentException;
 
 final class MatchQuery extends AbstractQuery
@@ -39,22 +40,22 @@ final class MatchQuery extends AbstractQuery
     {
         $innerQuery =  ['query' => $this->query];
         $this->printBoostAndQueryName($innerQuery);
-        $this->printIfNotDefault($innerQuery, 'analyzer', $this->getAnalyzer(), null);
-        $this->printIfNotDefault(
+        Utils::printIfNotDefault($innerQuery, 'analyzer', $this->getAnalyzer(), null);
+        Utils::printIfNotDefault(
             $innerQuery,
             'auto_generate_synonyms_phrase_query',
             $this->getAutoGenerateSynonymsPhraseQuery(),
             null
         );
-        $this->printIfNotDefault($innerQuery, 'fuzziness', $this->getFuzziness(), null);
-        $this->printIfNotDefault($innerQuery, 'max_expansions', $this->getMaxExpansions(), null);
-        $this->printIfNotDefault($innerQuery, 'prefix_length', $this->getPrefixLength(), null);
-        $this->printIfNotDefault($innerQuery, 'fuzzy_transpositions', $this->getFuzzyTranspositions(), null);
-        $this->printIfNotDefault($innerQuery, 'fuzzy_rewrite', $this->getFuzzyRewrite(), null);
-        $this->printIfNotDefault($innerQuery, 'lenient', $this->getLenient(), null);
-        $this->printIfNotDefault($innerQuery, 'operator', $this->getOperator(), null);
-        $this->printIfNotDefault($innerQuery, 'minimum_should_match', $this->getMinimumShouldMatch(), null);
-        $this->printIfNotDefault($innerQuery, 'zero_terms_query', $this->getZeroTermsQuery(), null);
+        Utils::printIfNotDefault($innerQuery, 'fuzziness', $this->getFuzziness(), null);
+        Utils::printIfNotDefault($innerQuery, 'max_expansions', $this->getMaxExpansions(), null);
+        Utils::printIfNotDefault($innerQuery, 'prefix_length', $this->getPrefixLength(), null);
+        Utils::printIfNotDefault($innerQuery, 'fuzzy_transpositions', $this->getFuzzyTranspositions(), null);
+        Utils::printIfNotDefault($innerQuery, 'fuzzy_rewrite', $this->getFuzzyRewrite(), null);
+        Utils::printIfNotDefault($innerQuery, 'lenient', $this->getLenient(), null);
+        Utils::printIfNotDefault($innerQuery, 'operator', $this->getOperator(), null);
+        Utils::printIfNotDefault($innerQuery, 'minimum_should_match', $this->getMinimumShouldMatch(), null);
+        Utils::printIfNotDefault($innerQuery, 'zero_terms_query', $this->getZeroTermsQuery(), null);
 
         return ['match' => [$this->field => $innerQuery]];
     }

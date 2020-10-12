@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace EsQb\Query;
 
+use EsQb\Utils;
+
 class RegexpQuery extends AbstractQuery implements MultiTermQuery
 {
     public const MAX_DETERMINIZED_STATES = 10000;
@@ -27,14 +29,14 @@ class RegexpQuery extends AbstractQuery implements MultiTermQuery
     {
         $innerQuery = ['value' => $this->regexp];
         $this->printBoostAndQueryName($innerQuery);
-        $this->printIfNotDefault($innerQuery, 'flags', $this->getFlags(), null);
-        $this->printIfNotDefault(
+        Utils::printIfNotDefault($innerQuery, 'flags', $this->getFlags(), null);
+        Utils::printIfNotDefault(
             $innerQuery,
             'max_determinized_states',
             $this->getMaxDeterminizedStates(),
             self::MAX_DETERMINIZED_STATES
         );
-        $this->printIfNotDefault($innerQuery, 'rewrite', $this->getRewrite(), null);
+        Utils::printIfNotDefault($innerQuery, 'rewrite', $this->getRewrite(), null);
 
         return ['regexp' => [$this->field => $innerQuery]];
     }

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace EsQb\Query;
 
+use EsQb\Utils;
+
 class MatchPhraseQuery extends AbstractQuery
 {
     private string $field;
@@ -23,7 +25,7 @@ class MatchPhraseQuery extends AbstractQuery
     {
         $innerQuery = ['query' => $this->query];
         $this->printBoostAndQueryName($innerQuery);
-        $this->printIfNotDefault($innerQuery, 'analyzer', $this->getAnalyzer(), null);
+        Utils::printIfNotDefault($innerQuery, 'analyzer', $this->getAnalyzer(), null);
 
         return ['match_phrase' => [$this->field => $innerQuery]];
     }

@@ -12,18 +12,18 @@ use function is_string;
 
 class TermQuery extends AbstractQuery
 {
-    private string $fieldName;
+    private string $field;
     /** @var bool|float|int|string */
     private $value;
 
     /**
      * @param string|int|float|bool $value
      */
-    public function __construct(string $fieldName, $value)
+    public function __construct(string $field, $value)
     {
         assert(is_string($value) || is_int($value) || is_float($value) || is_bool($value));
-        $this->fieldName = $fieldName;
-        $this->value     = $value;
+        $this->field = $field;
+        $this->value = $value;
     }
 
     /**
@@ -34,6 +34,6 @@ class TermQuery extends AbstractQuery
         $innerQuery = ['value' => $this->value];
         $this->printBoostAndQueryName($innerQuery);
 
-        return ['term' => [$this->fieldName => $innerQuery]];
+        return ['term' => [$this->field => $innerQuery]];
     }
 }

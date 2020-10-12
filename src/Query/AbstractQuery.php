@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace EsQb\Query;
 
+use EsQb\Utils;
 use InvalidArgumentException;
 
 // phpcs:ignore SlevomatCodingStandard.Classes.SuperfluousAbstractClassNaming.SuperfluousPrefix
@@ -56,22 +57,8 @@ abstract class AbstractQuery
      */
     protected function printBoostAndQueryName(array &$query): void
     {
-        $this->printIfNotDefault($query, 'boost', $this->getBoost(), self::DEFAULT_BOOST);
-        $this->printIfNotDefault($query, '_name', $this->getQueryName(), null);
-    }
-
-    /**
-     * @param array<string, mixed> $array
-     * @param mixed                $value
-     * @param mixed                $default
-     */
-    final protected function printIfNotDefault(array &$array, string $field, $value, $default): void
-    {
-        if ($value === $default) {
-            return;
-        }
-
-        $array[$field] = $value;
+        Utils::printIfNotDefault($query, 'boost', $this->getBoost(), self::DEFAULT_BOOST);
+        Utils::printIfNotDefault($query, '_name', $this->getQueryName(), null);
     }
 
     /**

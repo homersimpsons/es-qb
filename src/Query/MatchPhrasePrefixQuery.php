@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace EsQb\Query;
 
+use EsQb\Utils;
 use InvalidArgumentException;
 
 class MatchPhrasePrefixQuery extends AbstractQuery
@@ -32,10 +33,10 @@ class MatchPhrasePrefixQuery extends AbstractQuery
     {
         $innerQuery = ['query' => $this->query];
         $this->printBoostAndQueryName($innerQuery);
-        $this->printIfNotDefault($innerQuery, 'analyzer', $this->getAnalyzer(), null);
-        $this->printIfNotDefault($innerQuery, 'max_expansions', $this->getMaxExpansions(), self::MAX_EXPANSIONS);
-        $this->printIfNotDefault($innerQuery, 'slop', $this->getSlop(), self::SLOP);
-        $this->printIfNotDefault($innerQuery, 'zero_terms_query', $this->getZeroTermsQuery(), self::ZERO_TERMS_QUERY);
+        Utils::printIfNotDefault($innerQuery, 'analyzer', $this->getAnalyzer(), null);
+        Utils::printIfNotDefault($innerQuery, 'max_expansions', $this->getMaxExpansions(), self::MAX_EXPANSIONS);
+        Utils::printIfNotDefault($innerQuery, 'slop', $this->getSlop(), self::SLOP);
+        Utils::printIfNotDefault($innerQuery, 'zero_terms_query', $this->getZeroTermsQuery(), self::ZERO_TERMS_QUERY);
 
         return ['match_phrase_prefix' => [$this->field => $innerQuery]];
     }

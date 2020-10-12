@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace EsQb\Query;
 
+use EsQb\Utils;
+
 use function array_push;
 
 final class SimpleQueryStringQuery extends AbstractQuery
@@ -37,23 +39,23 @@ final class SimpleQueryStringQuery extends AbstractQuery
     {
         $innerQuery =  ['query' => $this->query];
         $this->printBoostAndQueryName($innerQuery);
-        $this->printIfNotDefault($innerQuery, 'fields', $this->getFields(), []);
-        $this->printIfNotDefault($innerQuery, 'default_operator', $this->getDefaultOperator(), self::DEFAULT_OPERATOR);
-        $this->printIfNotDefault($innerQuery, 'analyze_wildcard', $this->getAnalyzeWildcard(), null);
-        $this->printIfNotDefault($innerQuery, 'analyzer', $this->getAnalyzer(), null);
-        $this->printIfNotDefault(
+        Utils::printIfNotDefault($innerQuery, 'fields', $this->getFields(), []);
+        Utils::printIfNotDefault($innerQuery, 'default_operator', $this->getDefaultOperator(), self::DEFAULT_OPERATOR);
+        Utils::printIfNotDefault($innerQuery, 'analyze_wildcard', $this->getAnalyzeWildcard(), null);
+        Utils::printIfNotDefault($innerQuery, 'analyzer', $this->getAnalyzer(), null);
+        Utils::printIfNotDefault(
             $innerQuery,
             'auto_generate_synonyms_phrase_query',
             $this->getAutoGenerateSynonymsPhraseQuery(),
             null
         );
-        $this->printIfNotDefault($innerQuery, 'flags', $this->getFlags(), null);
-        $this->printIfNotDefault($innerQuery, 'fuzzy_max_expansions', $this->getFuzzyMaxExpansions(), null);
-        $this->printIfNotDefault($innerQuery, 'fuzzy_prefix_length', $this->getFuzzyPrefixLength(), null);
-        $this->printIfNotDefault($innerQuery, 'fuzzy_transpositions', $this->getFuzzyTranspositions(), null);
-        $this->printIfNotDefault($innerQuery, 'lenient', $this->getLenient(), null);
-        $this->printIfNotDefault($innerQuery, 'minimum_should_match', $this->getMinimumShouldMatch(), null);
-        $this->printIfNotDefault($innerQuery, 'quote_field_suffix', $this->getQuoteFieldSuffix(), null);
+        Utils::printIfNotDefault($innerQuery, 'flags', $this->getFlags(), null);
+        Utils::printIfNotDefault($innerQuery, 'fuzzy_max_expansions', $this->getFuzzyMaxExpansions(), null);
+        Utils::printIfNotDefault($innerQuery, 'fuzzy_prefix_length', $this->getFuzzyPrefixLength(), null);
+        Utils::printIfNotDefault($innerQuery, 'fuzzy_transpositions', $this->getFuzzyTranspositions(), null);
+        Utils::printIfNotDefault($innerQuery, 'lenient', $this->getLenient(), null);
+        Utils::printIfNotDefault($innerQuery, 'minimum_should_match', $this->getMinimumShouldMatch(), null);
+        Utils::printIfNotDefault($innerQuery, 'quote_field_suffix', $this->getQuoteFieldSuffix(), null);
 
         return ['simple_query_string' => $innerQuery];
     }

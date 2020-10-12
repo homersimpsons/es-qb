@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace EsQb\Query;
 
+use EsQb\GeoPoint;
+use EsQb\Script;
+
 /**
  * @TODO https://github.com/elastic/elasticsearch/blob/237650e9c054149fd08213b38a81a3666c1868e5/server/src/main/java/org/elasticsearch/index/query/QueryBuilders.java
  *
@@ -236,5 +239,95 @@ class Queries
     public static function spanMultiTermQuery(MultiTermQuery $multiTermQuery): SpanMultiTermQuery
     {
         return new SpanMultiTermQuery($multiTermQuery);
+    }
+
+    /**
+     * Creates a span field masking query.
+     */
+    public static function spanFieldMaskingQuery(SpanQuery $query, string $field): SpanFieldMaskingQuery
+    {
+        return new SpanFieldMaskingQuery($query, $field);
+    }
+
+    /**
+     * Creates a constant score query.
+     */
+    public static function constantScoreQuery(AbstractQuery $query): ConstantScoreQuery
+    {
+        return new ConstantScoreQuery($query);
+    }
+
+    /**
+     * Creates a script score query.
+     */
+    public static function scriptScoreQuery(AbstractQuery $query, Script $script): ScriptScoreQuery
+    {
+        return new ScriptScoreQuery($query, $script);
+    }
+
+    /**
+     * Creates a nested query.
+     */
+    public static function nestedQuery(
+        string $path,
+        AbstractQuery $query,
+        string $scoreMode = NestedQuery::DEFAULT_SCORE_MODE
+    ): NestedQuery {
+        return new NestedQuery($path, $query, $scoreMode);
+    }
+
+    /**
+     * Creates a terms query.
+     *
+     * @param array<string|int|float|bool> $value
+     */
+    public static function termsQuery(string $field, array $value): TermsQuery
+    {
+        return new TermsQuery($field, $value);
+    }
+
+    /**
+     * Creates a script query.
+     */
+    public static function scriptQuery(Script $script): ScriptQuery
+    {
+        return new ScriptQuery($script);
+    }
+
+    /**
+     * Creates a geo distance query.
+     */
+    public static function geoDistanceQuery(string $field, GeoPoint $origin, string $distance): GeoDistanceQuery
+    {
+        return new GeoDistanceQuery($field, $origin, $distance);
+    }
+
+    /**
+     * Creates a geo bounding box query.
+     */
+    public static function geoBoundingBoxQuery(
+        string $field,
+        GeoPoint $topLeft,
+        GeoPoint $bottomRight
+    ): GeoBoundingBoxQuery {
+        return new GeoBoundingBoxQuery($field, $topLeft, $bottomRight);
+    }
+
+    /**
+     * Creates a geo polygon query.
+     *
+     * @param GeoPoint[] $points
+     */
+    public static function geoPolygonQuery(string $field, array $points): GeoPolygonQuery
+    {
+        return new GeoPolygonQuery($field, $points);
+    }
+
+    /**
+     * Creates a exists query.
+     */
+    public static function existsQuery(string $field): ExistsQuery
+    {
+        return new ExistsQuery($field);
     }
 }

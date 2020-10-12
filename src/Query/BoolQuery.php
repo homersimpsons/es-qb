@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace EsQb\Query;
 
+use EsQb\Utils;
+
 use function array_map;
 use function array_push;
 
@@ -26,31 +28,31 @@ final class BoolQuery extends AbstractQuery
     {
         $innerQuery = [];
         $this->printBoostAndQueryName($innerQuery);
-        $this->printIfNotDefault(
+        Utils::printIfNotDefault(
             $innerQuery,
             'must',
             array_map(static fn (AbstractQuery $query) => $query->doToQuery(), $this->must),
             []
         );
-        $this->printIfNotDefault(
+        Utils::printIfNotDefault(
             $innerQuery,
             'filter',
             array_map(static fn (AbstractQuery $query) => $query->doToQuery(), $this->filter),
             []
         );
-        $this->printIfNotDefault(
+        Utils::printIfNotDefault(
             $innerQuery,
             'should',
             array_map(static fn (AbstractQuery $query) => $query->doToQuery(), $this->should),
             []
         );
-        $this->printIfNotDefault(
+        Utils::printIfNotDefault(
             $innerQuery,
             'must_not',
             array_map(static fn (AbstractQuery $query) => $query->doToQuery(), $this->mustNot),
             []
         );
-        $this->printIfNotDefault($innerQuery, 'minimum_should_match', $this->getMinimumShouldMatch(), null);
+        Utils::printIfNotDefault($innerQuery, 'minimum_should_match', $this->getMinimumShouldMatch(), null);
 
         return ['bool' => $innerQuery];
     }

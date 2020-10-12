@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace EsQb\Query;
 
+use EsQb\Utils;
+
 use function array_map;
 use function array_push;
 
@@ -22,7 +24,7 @@ final class DisMaxQuery extends AbstractQuery
     {
         $innerQuery = ['queries' => array_map(static fn (AbstractQuery $query) => $query->doToQuery(), $this->queries)];
         $this->printBoostAndQueryName($innerQuery);
-        $this->printIfNotDefault($innerQuery, 'tie_breaker', $this->getTieBreaker(), self::TIE_BREAKER);
+        Utils::printIfNotDefault($innerQuery, 'tie_breaker', $this->getTieBreaker(), self::TIE_BREAKER);
 
         return ['dis_max' => $innerQuery];
     }

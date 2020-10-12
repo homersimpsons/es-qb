@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace EsQb\Query;
 
+use EsQb\Utils;
+
 final class SpanNotQuery extends AbstractQuery implements SpanQuery
 {
     private SpanQuery $include;
@@ -28,9 +30,9 @@ final class SpanNotQuery extends AbstractQuery implements SpanQuery
             'exclude' => $this->exclude->toQuery(),
         ];
         $this->printBoostAndQueryName($innerQuery);
-        $this->printIfNotDefault($innerQuery, 'pre', $this->getPre(), null);
-        $this->printIfNotDefault($innerQuery, 'post', $this->getPost(), null);
-        $this->printIfNotDefault($innerQuery, 'dist', $this->getDist(), null);
+        Utils::printIfNotDefault($innerQuery, 'pre', $this->getPre(), null);
+        Utils::printIfNotDefault($innerQuery, 'post', $this->getPost(), null);
+        Utils::printIfNotDefault($innerQuery, 'dist', $this->getDist(), null);
 
         return ['span_not' => $innerQuery];
     }

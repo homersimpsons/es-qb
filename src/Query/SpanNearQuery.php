@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace EsQb\Query;
 
+use EsQb\Utils;
+
 use function array_map;
 use function array_push;
 
@@ -30,7 +32,7 @@ final class SpanNearQuery extends AbstractQuery implements SpanQuery
             'slop' => $this->slop,
         ];
         $this->printBoostAndQueryName($innerQuery);
-        $this->printIfNotDefault($innerQuery, 'in_order', $this->getInOrder(), null);
+        Utils::printIfNotDefault($innerQuery, 'in_order', $this->getInOrder(), null);
 
         return ['span_near' => $innerQuery];
     }

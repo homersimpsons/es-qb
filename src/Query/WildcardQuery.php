@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace EsQb\Query;
 
+use EsQb\Utils;
+
 class WildcardQuery extends AbstractQuery implements MultiTermQuery
 {
     private string $field;
@@ -23,7 +25,7 @@ class WildcardQuery extends AbstractQuery implements MultiTermQuery
     {
         $innerQuery = ['value' => $this->query];
         $this->printBoostAndQueryName($innerQuery);
-        $this->printIfNotDefault($innerQuery, 'rewrite', $this->getRewrite(), null);
+        Utils::printIfNotDefault($innerQuery, 'rewrite', $this->getRewrite(), null);
 
         return ['wildcard' => [$this->field => $innerQuery]];
     }

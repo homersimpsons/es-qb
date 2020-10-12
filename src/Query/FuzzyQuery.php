@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace EsQb\Query;
 
+use EsQb\Utils;
+
 final class FuzzyQuery extends AbstractQuery implements MultiTermQuery
 {
     private string $field;
@@ -27,11 +29,11 @@ final class FuzzyQuery extends AbstractQuery implements MultiTermQuery
     {
         $innerQuery =  ['value' => $this->query];
         $this->printBoostAndQueryName($innerQuery);
-        $this->printIfNotDefault($innerQuery, 'fuzziness', $this->getFuzziness(), null);
-        $this->printIfNotDefault($innerQuery, 'max_expansions', $this->getMaxExpansions(), null);
-        $this->printIfNotDefault($innerQuery, 'prefix_length', $this->getPrefixLength(), null);
-        $this->printIfNotDefault($innerQuery, 'transpositions', $this->getTranspositions(), null);
-        $this->printIfNotDefault($innerQuery, 'rewrite', $this->getRewrite(), null);
+        Utils::printIfNotDefault($innerQuery, 'fuzziness', $this->getFuzziness(), null);
+        Utils::printIfNotDefault($innerQuery, 'max_expansions', $this->getMaxExpansions(), null);
+        Utils::printIfNotDefault($innerQuery, 'prefix_length', $this->getPrefixLength(), null);
+        Utils::printIfNotDefault($innerQuery, 'transpositions', $this->getTranspositions(), null);
+        Utils::printIfNotDefault($innerQuery, 'rewrite', $this->getRewrite(), null);
 
         return ['fuzzy' => [$this->field => $innerQuery]];
     }

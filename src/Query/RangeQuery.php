@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace EsQb\Query;
 
+use EsQb\Utils;
+
 class RangeQuery extends AbstractQuery implements MultiTermQuery
 {
     public const RELATION = 'INTERSECTS';
@@ -29,13 +31,13 @@ class RangeQuery extends AbstractQuery implements MultiTermQuery
     {
         $innerQuery = [];
         $this->printBoostAndQueryName($innerQuery);
-        $this->printIfNotDefault($innerQuery, 'gt', $this->getGt(), null);
-        $this->printIfNotDefault($innerQuery, 'gte', $this->getGte(), null);
-        $this->printIfNotDefault($innerQuery, 'lt', $this->getLt(), null);
-        $this->printIfNotDefault($innerQuery, 'lte', $this->getLte(), null);
-        $this->printIfNotDefault($innerQuery, 'format', $this->getFormat(), null);
-        $this->printIfNotDefault($innerQuery, 'relation', $this->getRelation(), self::RELATION);
-        $this->printIfNotDefault($innerQuery, 'time_zone', $this->getTimeZone(), null);
+        Utils::printIfNotDefault($innerQuery, 'gt', $this->getGt(), null);
+        Utils::printIfNotDefault($innerQuery, 'gte', $this->getGte(), null);
+        Utils::printIfNotDefault($innerQuery, 'lt', $this->getLt(), null);
+        Utils::printIfNotDefault($innerQuery, 'lte', $this->getLte(), null);
+        Utils::printIfNotDefault($innerQuery, 'format', $this->getFormat(), null);
+        Utils::printIfNotDefault($innerQuery, 'relation', $this->getRelation(), self::RELATION);
+        Utils::printIfNotDefault($innerQuery, 'time_zone', $this->getTimeZone(), null);
 
         return ['range' => [$this->field => $innerQuery]];
     }
