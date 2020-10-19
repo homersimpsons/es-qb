@@ -49,7 +49,7 @@ abstract class EsQbIntegrationTest extends TestCase
         ]);
     }
 
-    public function assertValidQuery(AbstractQuery $query): void
+    protected function assertValidQuery(AbstractQuery $query): void
     {
         $validateResult = $this->doValidateBody(['query' => $query->toQuery()]);
         $this->assertTrue(
@@ -63,16 +63,28 @@ abstract class EsQbIntegrationTest extends TestCase
     }
 
     /**
-     * @param array<string, mixed> $query
+     * @param array<string, mixed> $queryBody
      *
      * @return array<string, mixed>
      */
-    private function doValidateBody(array $query): array
+    private function doValidateBody(array $queryBody): array
     {
         return self::$client->indices()->validateQuery([
             'index' => self::TEST_INDEX,
-            'body' => $query,
+            'body' => $queryBody,
             'explain' => true,
         ]);
+    }
+
+    /**
+     * @param array<string, mixed> $params
+     *
+     * @return array<string, mixed>
+     *
+     * @TODO Check
+     */
+    protected function validateSearchParams(array $params): array
+    {
+        return self::$client->search($params);
     }
 }
