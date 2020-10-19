@@ -6,7 +6,7 @@ namespace EsQb\Query;
 
 use EsQb\Utils;
 
-class MatchBoolPrefixQuery extends AbstractQuery
+final class MatchBoolPrefixQuery extends AbstractQuery
 {
     private string $field;
     private string $query;

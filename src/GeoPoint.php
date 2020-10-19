@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace EsQb;
 
-class GeoPoint
+final class GeoPoint
 {
     private float $lat;
     private float $lon;

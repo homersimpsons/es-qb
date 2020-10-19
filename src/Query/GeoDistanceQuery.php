@@ -7,7 +7,7 @@ namespace EsQb\Query;
 use EsQb\GeoPoint;
 use EsQb\Utils;
 
-class GeoDistanceQuery extends AbstractQuery
+final class GeoDistanceQuery extends AbstractQuery
 {
     public const DEFAULT_DISTANCE_TYPE     = 'arc';
     public const DEFAULT_VALIDATION_METHOD = 'STRICT';

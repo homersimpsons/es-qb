@@ -6,7 +6,7 @@ namespace EsQb\Query;
 
 use EsQb\Utils;
 
-class RegexpQuery extends AbstractQuery implements MultiTermQuery
+final class RegexpQuery extends AbstractQuery implements MultiTermQuery
 {
     public const MAX_DETERMINIZED_STATES = 10000;
 

@@ -9,7 +9,7 @@ use EsQb\Utils;
 
 use function array_map;
 
-class GeoPolygonQuery extends AbstractQuery
+final class GeoPolygonQuery extends AbstractQuery
 {
     public const DEFAULT_VALIDATION_METHOD = 'STRICT';
 

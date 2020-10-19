@@ -6,7 +6,7 @@ namespace EsQb\Query;
 
 use EsQb\Utils;
 
-class MatchPhraseQuery extends AbstractQuery
+final class MatchPhraseQuery extends AbstractQuery
 {
     private string $field;
     private string $query;

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace EsQb\Query;
 
-class TermsQuery extends AbstractQuery
+final class TermsQuery extends AbstractQuery
 {
     private string $field;
     /** @var array<bool|float|int|string> */

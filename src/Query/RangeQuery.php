@@ -6,7 +6,7 @@ namespace EsQb\Query;
 
 use EsQb\Utils;
 
-class RangeQuery extends AbstractQuery implements MultiTermQuery
+final class RangeQuery extends AbstractQuery implements MultiTermQuery
 {
     public const RELATION = 'INTERSECTS';
 

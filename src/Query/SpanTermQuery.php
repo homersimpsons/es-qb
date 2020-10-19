@@ -10,7 +10,7 @@ use function is_float;
 use function is_int;
 use function is_string;
 
-class SpanTermQuery extends AbstractQuery implements SpanQuery
+final class SpanTermQuery extends AbstractQuery implements SpanQuery
 {
     private string $field;
     /** @var bool|float|int|string */

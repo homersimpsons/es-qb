@@ -7,7 +7,7 @@ namespace EsQb\Query;
 use EsQb\GeoPoint;
 use EsQb\Utils;
 
-class GeoBoundingBoxQuery extends AbstractQuery
+final class GeoBoundingBoxQuery extends AbstractQuery
 {
     public const DEFAULT_TYPE              = 'memory';
     public const DEFAULT_VALIDATION_METHOD = 'STRICT';

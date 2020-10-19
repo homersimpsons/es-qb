@@ -10,7 +10,7 @@ use function is_float;
 use function is_int;
 use function is_string;
 
-class TermQuery extends AbstractQuery
+final class TermQuery extends AbstractQuery
 {
     private string $field;
     /** @var bool|float|int|string */

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace EsQb\Query;
 
-class ExistsQuery extends AbstractQuery
+final class ExistsQuery extends AbstractQuery
 {
     public const RELATION = 'INTERSECTS';
 

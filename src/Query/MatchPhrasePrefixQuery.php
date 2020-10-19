@@ -7,7 +7,7 @@ namespace EsQb\Query;
 use EsQb\Utils;
 use InvalidArgumentException;
 
-class MatchPhrasePrefixQuery extends AbstractQuery
+final class MatchPhrasePrefixQuery extends AbstractQuery
 {
     public const MAX_EXPANSIONS   = 50;
     public const SLOP             = 0;

@@ -12,7 +12,7 @@ use EsQb\Script;
  *
  * Utility class to create search queries.
  */
-class Queries
+final class Queries
 {
     private function __construct()
     {
