@@ -12,6 +12,8 @@ use EsQb\Query\ConstantScoreQuery;
 use EsQb\Query\DisMaxQuery;
 use EsQb\Query\DistanceFeatureQuery;
 use EsQb\Query\ExistsQuery;
+use EsQb\Query\FunctionScore\RandomScoreFunction;
+use EsQb\Query\FunctionScoreQuery;
 use EsQb\Query\FuzzyQuery;
 use EsQb\Query\GeoBoundingBoxQuery;
 use EsQb\Query\GeoDistanceQuery;
@@ -95,6 +97,10 @@ class QueriesTest extends TestCase
         $this->assertInstanceOf(SpanMultiTermQuery::class, Queries::spanMultiTermQuery(new RangeQuery('field')));
         $this->assertInstanceOf(SpanFieldMaskingQuery::class, Queries::spanFieldMaskingQuery($spanTermQuery, 'field'));
         $this->assertInstanceOf(ConstantScoreQuery::class, Queries::constantScoreQuery(new MatchAllQuery()));
+        $this->assertInstanceOf(
+            FunctionScoreQuery::class,
+            Queries::functionScoreQuery(new MatchAllQuery(), new RandomScoreFunction())
+        );
         $this->assertInstanceOf(ScriptScoreQuery::class, Queries::scriptScoreQuery(new MatchAllQuery(), new Script()));
         $this->assertInstanceOf(NestedQuery::class, Queries::nestedQuery('field', new MatchAllQuery()));
         $this->assertInstanceOf(TermsQuery::class, Queries::termsQuery('field', ['value']));

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace EsQb\Query;
 
 use EsQb\GeoPoint;
+use EsQb\Query\FunctionScore\AbstractScoreFunction;
 use EsQb\Script;
 
 /**
@@ -255,6 +256,18 @@ final class Queries
     public static function constantScoreQuery(AbstractQuery $query): ConstantScoreQuery
     {
         return new ConstantScoreQuery($query);
+    }
+
+    /**
+     * Creates a function score query.
+     */
+    public static function functionScoreQuery(
+        AbstractQuery $query,
+        AbstractScoreFunction $function,
+        float $functionWeight = FunctionScoreQuery::DEFAULT_WEIGHT,
+        ?AbstractQuery $functionFilter = null
+    ): FunctionScoreQuery {
+        return new FunctionScoreQuery($query, $function, $functionWeight, $functionFilter);
     }
 
     /**
