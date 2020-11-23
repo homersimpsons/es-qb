@@ -24,7 +24,7 @@ jobs:
       - name: Runs Elasticsearch
         uses: elastic/elastic-github-actions/elasticsearch@master
         with:
-          stack-version: 7.9.0
+          stack-version: 7.10.0
 
       - name: Cache dependencies
         uses: actions/cache@v2
